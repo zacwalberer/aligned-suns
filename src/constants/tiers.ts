@@ -1,47 +1,49 @@
 import type { Tier, TierName } from '@/types/sentiment'
 
+const PLACEHOLDER_IMAGE = '/images/01jyf05zh62d0z5a29v1.webp'
+
 export const TIERS: Tier[] = [
   {
     name: 'aligned',
     displayName: 'Aligned',
     min: 90,
     max: 100,
-    image: '/images/tier-aligned.svg',
+    image: PLACEHOLDER_IMAGE,
   },
   {
     name: 'nearly-aligned',
     displayName: 'Nearly Aligned',
     min: 70,
     max: 89,
-    image: '/images/tier-nearly-aligned.svg',
+    image: PLACEHOLDER_IMAGE,
   },
   {
     name: 'skewed',
     displayName: 'Skewed',
     min: 50,
     max: 69,
-    image: '/images/tier-skewed.svg',
+    image: PLACEHOLDER_IMAGE,
   },
   {
     name: 'pain',
     displayName: 'Pain',
     min: 30,
     max: 49,
-    image: '/images/tier-pain.svg',
+    image: PLACEHOLDER_IMAGE,
   },
   {
     name: '2-0-lead',
     displayName: '2-0 Lead',
     min: 20,
     max: 29,
-    image: '/images/tier-2-0-lead.svg',
+    image: PLACEHOLDER_IMAGE,
   },
   {
     name: 'dont-wanna-be-here',
     displayName: "I Don't Wanna Be Here",
     min: 0,
     max: 19,
-    image: '/images/tier-dont-wanna.svg',
+    image: PLACEHOLDER_IMAGE,
   },
 ]
 

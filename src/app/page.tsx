@@ -26,24 +26,22 @@ export default async function HomePage(): Promise<React.ReactElement> {
   const sentimentData = await getSentimentData()
 
   return (
-    <main className="min-h-screen py-8 px-4">
-      <div className="max-w-2xl mx-auto">
-        <header className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">
-            Suns Sentiment Tracker
-          </h1>
-          <p className="text-gray-400">
-            Real-time Phoenix Suns fan sentiment from Reddit, performance, and
-            you.
-          </p>
-        </header>
+    <main className="min-h-screen max-w-4xl mx-auto px-6 flex flex-col">
+      <header className="pt-24 pb-16 text-center">
+        <h1 className="font-serif text-5xl md:text-7xl italic tracking-tight">
+          Are we aligned?
+        </h1>
+      </header>
 
+      <section className="py-16">
         <SentimentDisplay data={sentimentData} />
+      </section>
 
-        <footer className="text-center mt-8 text-gray-600 text-sm">
-          <p>Data updates daily at 4 AM MST</p>
-        </footer>
-      </div>
+      <div className="flex-1" />
+
+      <footer className="border-t border-gray-800 py-8 text-xs text-gray-600">
+        <p>Updated daily at 4 AM MST</p>
+      </footer>
     </main>
   )
 }
