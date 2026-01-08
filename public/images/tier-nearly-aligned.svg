@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect width="256" height="256" fill="#1D1160"/>
+  <circle cx="128" cy="100" r="60" fill="#E56020" opacity="0.8"/>
+  <text x="128" y="200" text-anchor="middle" fill="#E56020" font-family="Arial" font-size="20" font-weight="bold">NEARLY ALIGNED</text>
+  <text x="128" y="225" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14">70-89%</text>
+</svg>

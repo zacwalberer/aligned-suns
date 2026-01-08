@@ -13,7 +13,6 @@ Always ask for confirmation before making major changes. This includes:
 - **Framework**: Next.js (latest stable, App Router)
 - **Language**: TypeScript with strict mode enabled
 - **Styling**: Tailwind CSS (utility classes only, no custom CSS)
-- **Backend/Database**: Supabase
 - **Deployment**: Vercel
 
 ---
@@ -32,11 +31,6 @@ Always ask for confirmation before making major changes. This includes:
 - Use Server Components by default, Client Components only when needed
 - Keep components small and focused
 - Named exports only
-
-### Supabase
-- All database schema changes require explicit approval
-- Use Row Level Security (RLS) policies
-- Type database queries with generated types
 
 ---
 
@@ -97,7 +91,7 @@ No arbitrary spacing values like `p-[13px]` or `mt-[22px]`.
 - Understand the request fully before writing code
 - Propose an approach and wait for approval on non-trivial changes
 - Keep changes focused and minimal
-- Don't add unrequested features or "improvements"
+- Don't add unrequested features
 
 ## What I Can Do Without Asking
 - Bug fixes with obvious solutions

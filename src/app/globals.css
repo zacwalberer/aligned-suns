@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-suns-orange: #E56020;
+  --color-suns-purple: #1D1160;
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
