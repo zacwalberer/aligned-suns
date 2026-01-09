@@ -1,16 +1,17 @@
-import Sentiment from 'sentiment'
-import type { RedditPost, SentimentResult } from '@/types/sentiment'
+import vader from 'vader-sentiment'
+import type { RedditPost } from '@/types/sentiment'
 
-const sentimentAnalyzer = new Sentiment()
+interface VaderScores {
+  neg: number
+  neu: number
+  pos: number
+  compound: number
+}
 
-export function analyzeText(text: string): SentimentResult {
-  const result = sentimentAnalyzer.analyze(text)
-  return {
-    score: result.score,
-    comparative: result.comparative,
-    positive: result.positive,
-    negative: result.negative,
-  }
+export function analyzeText(text: string): VaderScores {
+  return vader.SentimentIntensityAnalyzer.polarity_scores(
+    text
+  ) as VaderScores
 }
 
 export function analyzeRedditPosts(posts: RedditPost[]): number {
@@ -18,24 +19,23 @@ export function analyzeRedditPosts(posts: RedditPost[]): number {
     return 50 // Neutral default
   }
 
-  let totalScore = 0
+  let totalCompound = 0
   let totalWeight = 0
 
   for (const post of posts) {
     const text = `${post.title} ${post.selftext}`
-    const result = analyzeText(text)
+    const scores = analyzeText(text)
 
     // Weight by engagement (upvotes + comments)
     const engagement = Math.log(Math.max(post.score, 1) + post.numComments + 1)
-    totalScore += result.comparative * engagement
+    totalCompound += scores.compound * engagement
     totalWeight += engagement
   }
 
-  const averageComparative = totalWeight > 0 ? totalScore / totalWeight : 0
+  const averageCompound = totalWeight > 0 ? totalCompound / totalWeight : 0
 
-  // Convert from comparative scale (-1 to 1 typical range) to 0-100 scale
-  // comparative can exceed these bounds but we clamp to 0-100
-  const normalizedScore = Math.min(100, Math.max(0, (averageComparative + 1) * 50))
+  // Convert from compound scale (-1 to +1) to 0-100 scale
+  const normalizedScore = ((averageCompound + 1) / 2) * 100
 
-  return Math.round(normalizedScore)
+  return Math.round(Math.min(100, Math.max(0, normalizedScore)))
 }

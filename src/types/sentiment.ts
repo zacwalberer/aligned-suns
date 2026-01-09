@@ -32,10 +32,3 @@ export interface RedditPost {
   subreddit: string
   created: number
 }
-
-export interface SentimentResult {
-  score: number
-  comparative: number
-  positive: string[]
-  negative: string[]
-}
